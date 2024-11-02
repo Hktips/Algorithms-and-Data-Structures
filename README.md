@@ -27,3 +27,34 @@ For the last customer, we can not give the change of $15 back because we only ha
 Since not every customer received the correct change, the answer is false.
  
 ```
+
+### <ol>Problem Statement: Shortest Job first- **</a></ol>
+
+```c++
+Example 1:
+
+Input:
+n = 5
+bt = [4,3,7,1,2]
+Output: 4
+Explanation: After sorting burst times by shortest job policy, calculated average waiting time is 4.
+ 
+```
+// User function Template for C++
+
+// Back-end compolete function Template for C++
+
+class Solution {
+  public:
+    long long solve(vector<int>& bt) {
+        sort(bt.begin(),bt.end());
+        float wait_time=0;
+        int total_time=0;
+        int n=bt.size();
+        for(int i=0;i<n;i++){
+            wait_time+=total_time;
+            total_time+=bt[i];
+        }
+        return wait_time/n;
+    }
+};
