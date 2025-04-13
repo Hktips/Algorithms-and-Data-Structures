@@ -74,3 +74,69 @@ Input: nums = [3,2,1,0,4]
 Output: false
 Explanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.
 ```
+
+### <h1 align="center"> Binary Tree implementation</h1>
+```
+// Binary Tree implementation using C++
+
+#include<iostream>
+#include<string>
+using namespace std;
+class BinaryTree{
+    private:
+    struct Node{
+        int value;
+        Node* left;
+        Node* right;
+        Node(int val):value(val),left(nullptr),right(nullptr){}
+    };
+    Node* root;
+    public:
+    BinaryTree():root(nullptr){}
+    void insert(){
+        int value;
+        cout<<"Enter root to insert: ";
+        cin>>value;
+        root =new Node(value);
+        insert(root);
+    }
+    void insert(Node* node){
+        char response;
+        cout <<"do you want to insert left node "<<node->value<<"(y/n): ";  
+        cin>>response;
+        if(response=='y'||response=='Y'){
+            int value;
+            cout<<"Enter left node to insert:";
+            cin>>value;
+            node->left=new Node(value);
+            insert(node->left);
+        }
+    
+        cout <<"do you want to insert right node "<<node->value<<"(y/n): ";  
+        cin>>response;
+        if(response=='y'||response=='Y'){
+            int value;
+            cout<<"Enter right node to insert:";
+            cin>>value;
+            node->right=new Node(value);
+            insert(node->right);
+        }
+    }
+    void display(Node* node,string indent){
+        if(node==nullptr){
+            return;
+        }
+        cout<<indent<<node->value<<endl;
+        display(node->left,indent+"\t");
+        display(node->right,indent+"\t");
+    }
+    void display(){
+        display(root,"");
+    }
+};
+int main(){
+BinaryTree tree;
+tree.insert();
+tree.display();
+return 0;
+}
